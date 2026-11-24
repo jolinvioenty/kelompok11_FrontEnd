@@ -1,0 +1,899 @@
+/* Pengaturan Global */
+/* reset: hilangkan margin dan padding bawaan; border-box = lebar sudah termasuk padding */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* font, warna latar kuning, dan warna teks untuk seluruh halaman */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffdd33;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+/* bar merah di atas dengan warna gradasi */
+header {
+  background: linear-gradient(135deg, #b71c1c, #e53935);
+  color: white;
+  padding: 2rem 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* logo dan judul sejajar di tengah */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* logo bulat (border-radius 50%) dengan bingkai putih */
+.logo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid white;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* judul kantin */
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.2rem;
+}
+
+/* alamat di bawah judul, dibuat sedikit transparan */
+header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* Navbar */
+/* bar menu merah; item disusun sejajar */
+nav {
+  background-color: #b71c1c;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+/* tampilan tiap link menu */
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 14px 18px;
+  font-size: 0.95rem;
+  display: inline-block;
+  transition: background 0.2s;
+}
+
+/* warna lebih gelap saat disorot atau saat halaman aktif */
+nav a:hover,
+nav a.active {
+  background-color: #7f0000;
+  color: white;
+}
+
+/* pembungkus menu Menu; relative agar daftar kategori bisa dipasang di bawahnya */
+.dropdown-nav {
+  position: relative;
+  display: inline-block;
+}
+
+/* tambah tanda panah setelah tulisan Menu */
+.dropdown-nav > a::after {
+  content: " ▾";
+  font-size: 0.75rem;
+}
+
+/* daftar kategori: awalnya disembunyikan, muncul tepat di bawah menu (absolute) */
+.dropdown-nav-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #c62828;
+  min-width: 180px;
+  z-index: 999;
+  border-radius: 0 0 6px 6px;
+}
+
+/* tiap item kategori satu baris */
+.dropdown-nav-content a {
+  display: block;
+  padding: 10px 16px;
+}
+
+/* tampilkan daftar kategori saat kursor di atas menu */
+.dropdown-nav:hover .dropdown-nav-content {
+  display: block;
+}
+
+/* Tata Letak Utama */
+/* aside dan main berdampingan; wrap = turun ke bawah kalau layar sempit */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* kolom kiri (info kantin), lebarnya 1 bagian */
+aside {
+  flex: 1;
+  min-width: 280px;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+}
+
+/* judul bagian di aside, ada garis merah di bawahnya */
+aside h3 {
+  color: #d32f2f;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #d32f2f;
+  padding-bottom: 0.5rem;
+}
+
+/* teks paragraf di aside */
+aside p {
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+}
+
+/* kolom kanan (tabel menu), lebarnya 3 bagian; bisa digeser kalau tabel terlalu lebar */
+main {
+  flex: 3;
+  min-width: 300px;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+}
+
+/* judul di kolom utama */
+main h2 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Filter Menu */
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+/* kotak cari lebih lebar (2 bagian) */
+#searchInput {
+  flex: 2;
+  min-width: 180px;
+}
+
+/* filter kategori (1 bagian) */
+#filterKategori {
+  flex: 1;
+  min-width: 160px;
+}
+
+/* gaya input dan dropdown; menimpa tampilan bawaan Bootstrap */
+.form-control,
+.form-select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  box-shadow: none;
+}
+
+/* kotak cari dibuat sedikit lebih besar */
+#searchInput.form-control {
+  padding: 10px 15px;
+  font-size: 1rem;
+}
+
+/* saat diklik: garis dan bayangan jadi merah */
+.form-control:focus,
+.form-select:focus {
+  border-color: #d32f2f;
+  box-shadow: 0 0 8px rgba(211, 47, 47, 0.25);
+  outline: none;
+}
+
+/* Tabel Menu */
+/* tabel memenuhi lebar; garis antar sel digabung (collapse) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background: white;
+  text-align: left;
+  vertical-align: middle;
+}
+
+/* jarak bawah tabel */
+.table {
+  margin-bottom: 1rem;
+}
+
+/* garis dan jarak isi sel */
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+}
+
+/* judul kolom: latar merah, huruf kapital */
+th {
+  background-color: #d32f2f;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+/* hapus warna latar bawaan Bootstrap di sel tabel */
+.table > :not(caption) > * > * {
+  background-color: transparent;
+  color: inherit;
+  border-bottom-width: 1px;
+  box-shadow: none;
+}
+
+/* pastikan judul kolom tetap merah (menimpa Bootstrap) */
+.table thead th {
+  background-color: #d32f2f;
+  color: white;
+}
+
+/* baris judul kategori (abu-abu, teks di tengah) */
+tr.kategori-header {
+  background-color: #e9ecef;
+  font-weight: bold;
+  color: #d32f2f;
+  text-align: center;
+}
+
+/* baris genap diberi warna berbeda (zebra) */
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* baris berubah warna saat disorot */
+tbody tr:hover {
+  background-color: #f1f5f9;
+  transition: background 0.2s ease;
+}
+
+/* warna baris kategori tidak tertimpa Bootstrap */
+.table tbody tr.kategori-header td {
+  background-color: #e9ecef;
+  color: #d32f2f;
+}
+
+/* Galeri Menu */
+/* foto disusun grid; jumlah kolom menyesuaikan lebar layar (minimal 140px) */
+.galeri-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+/* ukuran foto seragam; object-fit cover agar tidak gepeng */
+.galeri-grid img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+/* foto membesar sedikit saat disorot */
+.galeri-grid img:hover {
+  transform: scale(1.04);
+}
+
+/* foto menu andalan di aside */
+.menu-andalan {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* keterangan di bawah foto */
+.caption-menu {
+  font-size: 0.8rem;
+  color: #888;
+  text-align: center;
+  margin-top: 0.4rem;
+  font-style: italic;
+}
+
+/* Form Pemesanan dan Kontak */
+/* pembungkus form pemesanan */
+.form-section {
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+/* kartu putih untuk form */
+.form-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* judul form */
+.form-card h2 {
+  color: #d32f2f;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #d32f2f;
+  font-size: 1.1rem;
+}
+
+/* jarak antar isian form */
+.form-group {
+  margin-bottom: 14px;
+}
+
+/* label di atas input */
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+/* input, dropdown, dan textarea selebar kartunya */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
+
+/* textarea hanya bisa ditarik ke bawah */
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* kolom pesan di form kontak dibuat lebih tinggi */
+.form-card-contact .form-group textarea {
+  min-height: 120px;
+}
+
+/* tombol kirim merah selebar form */
+.btn-submit {
+  width: 100%;
+  padding: 11px;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.3s;
+}
+
+/* lebih gelap saat disorot */
+.btn-submit:hover {
+  background-color: #b71c1c;
+}
+
+/* kotak hijau untuk pesan berhasil */
+.alert-success {
+  display: block;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* Peta */
+/* bingkai peta; overflow hidden agar sudutnya ikut membulat */
+.peta-wrapper {
+  margin-top: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* peta memenuhi lebar bingkai */
+.peta-wrapper iframe {
+  width: 100%;
+  height: 220px;
+  border: none;
+  display: block;
+}
+
+/* Halaman Kontak */
+/* halaman kontak: info dan form berdampingan */
+.kontak-wrapper {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* kartu informasi kontak (kiri) */
+.kontak-info {
+  flex: 1;
+  min-width: 260px;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+}
+
+/* judul kartu informasi */
+.kontak-info h2 {
+  color: #d32f2f;
+  border-bottom: 2px solid #d32f2f;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+/* teks paragraf di kartu informasi */
+.kontak-info p {
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+}
+
+/* form kontak (kanan), lebarnya 2 bagian */
+.form-card-contact {
+  flex: 2;
+  min-width: 300px;
+}
+
+/* link kembali ke halaman utama */
+.back-link {
+  display: inline-block;
+  margin: 0 1rem 1rem;
+  color: #d32f2f;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+/* garis bawah saat disorot */
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* tombol Hubungi Kami */
+.link-kontak {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background: #d32f2f;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.3s;
+}
+
+/* lebih gelap saat disorot */
+.link-kontak:hover {
+  background: #b71c1c;
+  color: white;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #222;
+  color: white;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+/* hapus jarak bawah teks footer */
+footer p {
+  margin-bottom: 0;
+}
+
+/* Tampilan Responsif */
+@media (max-width: 768px) {
+  /* aside dan main ditumpuk ke bawah */
+  .container,
+  .kontak-wrapper {
+    flex-direction: column;
+  }
+
+  /* logo dan judul ditumpuk, teks di tengah */
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* menu boleh turun ke baris berikutnya */
+  nav {
+    flex-wrap: wrap;
+  }
+}
+
+/* =========================================
+   FORM PEMESANAN MULTI-PRODUK
+========================================= */
+
+/* keterangan kecil di bawah nama menu */
+.menu-deskripsi {
+  display: block;
+  color: #777;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  margin-top: 2px;
+}
+
+/* tombol hijau Tambah (menambah menu ke keranjang) */
+.btn-tambah-menu {
+  width: 100%;
+  height: 100%;
+  min-height: 42px;
+  padding: 8px 10px;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* lebih gelap saat disorot */
+.btn-tambah-menu:hover {
+  background-color: #1b5e20;
+}
+
+/* tombol pudar dan tidak bisa diklik saat sedang mengirim */
+.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* kotak putus-putus saat keranjang masih kosong */
+.keranjang-kosong {
+  padding: 14px;
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+  border: 1px dashed #ccc;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+/* kotak daftar pesanan */
+.keranjang {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* satu baris pesanan: 4 kolom (nama, jumlah, subtotal, tombol hapus) */
+.keranjang-item {
+  display: grid;
+  grid-template-columns: 1fr auto 110px auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+}
+
+/* nama menu */
+.keranjang-info strong {
+  display: block;
+  font-size: 0.92rem;
+  line-height: 1.3;
+}
+
+/* harga per porsi */
+.keranjang-info small {
+  color: #777;
+}
+
+/* kotak tombol kurang, jumlah, dan tambah */
+.qty-control {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* ukuran dan warna tombol + dan - */
+.qty-control button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #f5f5f5;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #d32f2f;
+}
+
+/* warna muda saat disorot (kecuali tombol nonaktif) */
+.qty-control button:hover:not(:disabled) {
+  background: #ffe0e0;
+}
+
+/* tombol abu-abu saat jumlah sudah 1 */
+.qty-control button:disabled {
+  color: #bbb;
+  cursor: not-allowed;
+}
+
+/* angka jumlah */
+.qty-control span {
+  min-width: 36px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* subtotal tiap menu, rata kanan */
+.keranjang-subtotal {
+  text-align: right;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+/* tombol hapus (ikon tempat sampah) tanpa bingkai */
+.keranjang-hapus {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.05rem;
+  padding: 4px;
+}
+
+/* baris total pembayaran */
+.keranjang-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #fff3e0;
+  font-size: 1.05rem;
+}
+
+/* angka total dibuat merah dan lebih besar */
+.keranjang-total strong {
+  color: #d32f2f;
+  font-size: 1.15rem;
+}
+
+/* kotak merah untuk pesan gagal */
+.alert-error {
+  display: block;
+  background: #fdecea;
+  color: #b71c1c;
+  border: 1px solid #f5c6cb;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 576px) {
+  /* baris pesanan jadi 2 kolom agar muat di layar HP */
+  .keranjang-item {
+    grid-template-columns: 1fr auto;
+  }
+
+  /* subtotal rata kiri */
+  .keranjang-subtotal {
+    text-align: left;
+  }
+}
+
+/* =========================================
+   POPUP STRUK
+========================================= */
+
+/* popup struk berada di atas semua elemen (z-index tinggi) dan bisa di-scroll */
+.struk-portal .modal {
+  z-index: 2000;
+  overflow-y: auto;
+}
+
+/* latar gelap tepat di bawah popup */
+.struk-portal .modal-backdrop {
+  z-index: 1990;
+}
+
+/* judul popup */
+.struk-portal .modal-title {
+  color: #d32f2f;
+  font-size: 1.1rem;
+}
+
+/* kertas struk: font monospace, garis putus-putus, lebar maksimal 340px */
+.struk {
+  max-width: 340px;
+  margin: 0 auto;
+  padding: 16px;
+  background: #fffef8;
+  border: 1px dashed #999;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
+  color: #222;
+  line-height: 1.45;
+}
+
+/* logo dan nama kantin di struk */
+.struk-kepala {
+  text-align: center;
+}
+
+/* ukuran logo di struk */
+.struk-kepala img {
+  width: 90px;
+  height: auto;
+  display: block;
+  margin: 0 auto 6px;
+  clip-path: inset(1%); /* membuang garis tepi bawaan file logo */
+}
+
+/* nama kantin di struk */
+.struk-kepala h3 {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+/* garis putus-putus pemisah */
+.struk-garis {
+  border: 0;
+  border-top: 1px dashed #666;
+  margin: 10px 0;
+  opacity: 1;
+}
+
+/* label di kiri, nilai di kanan */
+.struk-baris {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* nilai di kanan dibuat rata kanan */
+.struk-baris > :last-child {
+  text-align: right;
+}
+
+/* jarak antar menu di struk */
+.struk-item {
+  margin-bottom: 6px;
+}
+
+/* nama menu dicetak tebal */
+.struk-item-nama {
+  font-weight: 700;
+}
+
+/* baris TOTAL lebih besar dan tebal */
+.struk-total {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* catatan pesanan dicetak miring */
+.struk-catatan {
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* tulisan 'Catatan:' dicetak tebal */
+.struk-catatan span {
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* jarak atas baris status */
+.struk-status {
+  margin-top: 8px;
+}
+
+.struk-terima-kasih {
+  text-align: center;
+  margin: 0;
+}
+
+/* Saat dicetak: hanya struk yang keluar, bukan seluruh halaman */
+@media print {
+  /* margin kertas saat dicetak */
+  @page {
+    margin: 8mm;
+  }
+
+  /* sembunyikan semua elemen kecuali struk */
+  body > *:not(.struk-portal) {
+    display: none !important;
+  }
+
+
+  body {
+    background: #fff !important;
+  }
+
+  /* sembunyikan latar gelap, judul, dan tombol popup */
+  .struk-portal .modal-backdrop,
+  .struk-portal .modal-header,
+  .struk-portal .modal-footer {
+    display: none !important;
+  }
+
+  /* popup dibuat jadi elemen biasa supaya ikut tercetak */
+  .struk-portal .modal {
+    position: static !important;
+    display: block !important;
+    overflow: visible !important;
+    background: none !important;
+  }
+
+  /* lebar popup penuh */
+  .struk-portal .modal-dialog {
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    display: block !important;
+  }
+
+  /* hapus bingkai dan bayangan */
+  .struk-portal .modal-content,
+  .struk-portal .modal-body {
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: none !important;
+  }
+
+  /* lebar kertas struk 80 mm */
+  .struk {
+    border: 0;
+    max-width: 80mm;
+    background: #fff;
+  }
+}

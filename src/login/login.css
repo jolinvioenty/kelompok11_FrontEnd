@@ -1,0 +1,135 @@
+/* halaman login: kotak login diletakkan di tengah layar */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #ffdd33;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* kotak putih berisi form; garis merah di bagian atas */
+.login-card {
+  width: 100%;
+  max-width: 430px;
+  background: #fff;
+  padding: 32px;
+  border-radius: 12px;
+  border-top: 6px solid #b71c1c;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* bagian logo dan nama kantin di atas form */
+.login-brand {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+/* ukuran kotak logo */
+.login-logo {
+  width: 130px;
+  margin: 0 auto 8px;
+}
+
+/* gambar logo mengikuti lebar kotaknya, tidak gepeng */
+.login-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  clip-path: inset(1%); /* membuang garis tepi bawaan file logo */
+}
+
+/* tulisan "Kantin Sahera" */
+.login-brand h1 {
+  font-size: 25px;
+  font-weight: 700;
+  color: #b71c1c;
+  margin: 0;
+}
+
+/* tulisan "Pak Kirno · Sistem Pemesanan" */
+.login-brand p {
+  color: #666;
+  margin: 5px 0 0;
+}
+
+/* judul "Masuk ke Akun" */
+.login-card h2 {
+  font-size: 21px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+/* kalimat kecil di bawah judul */
+.login-subtitle {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+/* tulisan label (Masuk sebagai, Username, Password) */
+.login-card .form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* kotak ikon di samping input (orang dan gembok) */
+.login-card .input-group-text {
+  background: #fff5f5;
+  color: #b71c1c;
+  border-color: #ccc;
+}
+
+/* saat input diklik: garis dan bayangan jadi merah, menimpa warna biru Bootstrap */
+.login-card .form-control:focus,
+.login-card .form-select:focus {
+  border-color: #d32f2f;
+  box-shadow: 0 0 0 0.2rem rgba(211, 47, 47, 0.15);
+}
+
+/* tombol Login dengan warna merah gradasi */
+.btn-login {
+  background: linear-gradient(135deg, #b71c1c, #e53935);
+  color: #fff;
+  padding: 11px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+}
+
+/* tombol jadi merah tua saat kursor di atasnya */
+.btn-login:hover {
+  background: #7f0000;
+  color: #fff;
+}
+
+/* kotak kuning berisi akun untuk demo */
+.login-demo {
+  margin-top: 22px;
+  padding: 12px;
+  background: #fff8df;
+  border-left: 4px solid #d32f2f;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* tulisan footer di bagian bawah */
+.login-foot {
+  display: block;
+  text-align: center;
+  margin-top: 22px;
+  color: #999;
+}
+
+/* layar HP: padding kotak login dikurangi */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 24px 20px;
+  }
+}
