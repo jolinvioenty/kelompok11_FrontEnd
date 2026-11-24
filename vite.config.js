@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+﻿import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 // sehingga halaman Login muncul tanpa membuka /admin atau /pelanggan.
@@ -8,7 +8,7 @@ function alamatUtamaKeSpa() {
     const [path, query] = url.split("?");
 
     if (path === "/" || path === "/index.html") {
-      req.url = "/main.html" + (query ? `?${query}` : "");
+      req.url = "/index.html" + (query ? `?${query}` : "");
     }
 
     next();
@@ -31,7 +31,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: "main.html",
+        main: "index.html",
         login: "login.html",
         admin: "admin.html"
       }
